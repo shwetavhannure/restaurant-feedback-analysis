@@ -62,7 +62,7 @@ restaurant-feedback-analysis
 
 ```bash
 # Clone the repository
-git clone https://github.com/your-username/restaurant-feedback-analysis.git
+git clone https://github.com/shwetavhannure/restaurant-feedback-analysis.git
 
 # Navigate into the project folder
 cd restaurant-feedback-analysis
