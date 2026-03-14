@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sentiment Analysis Dashboard</title>
+
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.2.0"></script>
+</head>
+
+<body>
+  <header>
+    <h1>Sentiment Analysis of Restaurant Feedbacks</h1>
+    <nav>
+      <a href="{{ url_for('dashboard') }}">Dashboard</a>
+      <a href="{{ url_for('reviews') }}">Reviews</a>
+      <a href="{{ url_for('analyze') }}">Analyze</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="cards">
+      <div class="card" id="totalCard">📝 Total Reviews: {{ total }}</div>
+      <div class="card" id="positiveCard">😊 Positive Feedbacks: {{ positive }}</div>
+      <div class="card" id="neutralCard">😐 Neutral Feedbacks: {{ neutral }}</div>
+      <div class="card" id="negativeCard">😞 Negative Feedbacks: {{ negative }}</div>
+    </section>
+
+    <section class="charts">
+      <div class="chart-container">
+        <h3>Sentiment Distribution</h3>
+        <div class="chart-wrapper"><canvas id="sentimentChart"></canvas></div>
+      </div>
+
+      <div class="chart-container">
+        <h3>Emotion Distribution</h3>
+        <div class="chart-wrapper"><canvas id="emotionChart"></canvas></div>
+      </div>
+    </section>
+  </main>
+  <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>

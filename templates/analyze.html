@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Analyze - All Feedbacks</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+  <header>
+    <h1>Sentiment Analysis of Restaurant Feedbacks</h1>
+    <nav>
+      <a href="{{ url_for('dashboard') }}">Dashboard</a>
+      <a href="{{ url_for('reviews') }}">Reviews</a>
+      <a href="{{ url_for('analyze') }}">Analyze</a>
+    </nav>
+  </header>
+
+  <main>
+    <h2 style="text-align:center; margin-top:1rem;">All Feedbacks</h2>
+
+    <div class="analyze-container">
+      {% if feedbacks|length == 0 %}
+        <p style="text-align:center; color:#c5c6c7; margin-top:2rem;">No feedbacks yet.</p>
+      {% else %}
+        <div class="feedback-list">
+          {% for f in feedbacks|reverse %}
+            <div class="analyze-card">
+              <p class="fb-text">{{ f.text }}</p>
+              <p class="fb-sentiment" style="color:red;">Sentiment: {{ '%.2f'|format(f.sentiment) }}</p>
+              <p class="fb-emotion">Emotion: {{ f.emotion }}</p>
+            </div>
+          {% endfor %}
+        </div>
+      {% endif %}
+    </div>
+
+  </main>
+</body>
+</html>
